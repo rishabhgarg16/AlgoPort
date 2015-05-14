@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title>
+			Heap Sort Visualization
+		</title>
+		
+		<!-- css sheet for how the page is laid out -->
+		
+		<link rel="stylesheet" href="visualizationPageStyle.css">
+			
+			
+		<!-- jqueury stuff.  Only used for the animation speed slider. -->
+		<link rel="stylesheet" href="jquery-ui-1.8.11.custom.css">				
+		<script src="./Heap Sort Visualization_files/jquery-1.5.2.min.js"></script><style type="text/css"></style>
+		<script src="./Heap Sort Visualization_files/jquery-ui-1.8.11.custom.min.js"></script>
+				
+		<!-- Javascript for the actual visualization code -->
+		<script type="text/javascript" src="./Heap Sort Visualization_files/CustomEvents.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/UndoFunctions.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/AnimatedObject.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/AnimatedLabel.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/AnimatedCircle.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/AnimatedRectangle.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/AnimatedLinkedList.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/HighlightCircle.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/Line.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/ObjectManager.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/AnimationMain.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/Algorithm.js"> </script>
+		<script type="text/javascript" src="./Heap Sort Visualization_files/HeapSort.js"> </script> 
+				
+			
+	 </head> 
+	
+	<body onload="init();" class="VisualizationMainPage">
+		
+		<div id="container">
+			
+			<div id="header">  
+				<h1>Heap Sort</h1>
+			</div>
+			
+			<div =="" id="mainContent"> 
+				
+				<div id="algoControlSection">
+					<!-- Table for buttons to control specific animation (insert/find/etc) -->
+					<!-- (filled in by javascript code specific to the animtion) -->
+					<table id="AlgorithmSpecificControls"> <td><input type="Button" value="Randomize Array" name="Randomize Array"></td><td><input type="Button" value="Heap Sort" name="Heap Sort"></td></table> 
+				</div>
+				
+					<!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
+									
+				<canvas id="canvas" width="1000" height="500"></canvas>
+				
+				<div id="generalAnimationControlSection">
+					<!-- Table for buttons to control general animation (play/pause/undo/etc) ->
+					<!-- (filled in by javascript code, specifically AnimationMain.js)  -->
+
+					<table id="GeneralAnimationControls">  <td><input type="Button" value="Skip Back" disabled=""></td><td><input type="Button" value="Step Back" disabled=""></td><td><input type="Button" value="Pause"></td><td><input type="Button" value="Step Forward" disabled=""></td><td><input type="Button" value="Skip Forward" disabled=""></td><td><table><tr><td><div display="inline-block" float="left" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" style="width:200px"><a href="https://www.cs.usfca.edu/~galles/visualization/HeapSort.html#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 1%;"></a></div></td></tr><tr><td align="center">Animation Speed</td></tr></table></td><td> w:</td><td><input type="Text" value="1000" size="4"></td><td>       h:</td><td><input type="Text" value="500" size="4"></td><td><input type="Button" value="Change Canvas Size"></td><td><input type="Button" value="Move Controls"></td></table>		
+				</div>
+				
+			</div> <!-- mainContent -->
+			
+			<div id="footer">  
+				<p><a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">Algorithm Visualizations</a></p>
+			</div>
+
+		</div><!-- container -->
+	
+
+</body></html>

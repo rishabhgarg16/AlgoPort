@@ -1,0 +1,152 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Programming Made Fun</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body>
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4 offset4" >
+<div class="page-header">
+  <h2>Programming Made Fun</h1>
+</div>
+    </div>
+  <div class="span8 offset2">
+    <div class="row-fluid">
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <a href="index.html"></a>
+    <ul class="nav">
+    <li class="active"><a href="#">Trees</a></li>
+ <li><a href="#">Dp</a></li>
+ 
+    <li>
+      <a href="#">
+      Backtracking
+      </a>
+        
+    </li>
+   <li><a href="team.html">sdsd</a></li>
+    <li>
+      <a href="#">dsdsd
+      </a>
+       </li>
+
+       <li><a href=""#>sdsd</a></li>
+    <li><a href="dropbox.php">sdsd</a></li>
+</ul>
+    </div>
+    </div>
+     <div class="tabbable tabs-left">
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      
+     <h3>Same tree or not </h3>
+        <hr></hr><div class="well">
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Algorithm</h4>Given two trees, return true if they are structurally identical.
+<img src="tree.jpg" /> 	 <img src="tree1.jpg" />
+are not same.
+      </pre>
+       </div>
+       <div class="well"> 
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Source Code</h4>#include &lt;iostream &gt;
+using namespace std;
+struct node
+{
+    int data;
+    node *left;
+    node *right;
+};
+
+node *newnode(int val)
+{
+    node *ptr=new node();
+    ptr->data=val;
+    ptr->left=NULL;
+    ptr->right=NULL;
+    return(ptr);
+}
+
+bool sametree(node *ptr1,node *ptr2)
+{
+    if(ptr1==NULL&&ptr2==NULL)
+    {
+        return(true);
+    }
+    if(ptr1!=NULL&&ptr2!=NULL)
+    {
+        return((ptr1->data&&ptr2->data)
+               &&sametree(ptr1->left,ptr2->left)
+               &&sametree(ptr1->right,ptr2->right)
+              );
+    }
+    else
+    {
+        return(false);
+    }
+}
+
+int main()
+{
+    //first tree
+    node *root1=newnode(1);
+    root1->left=newnode(2);
+    root1->right=newnode(3);
+    root1->left->left=newnode(4);
+    root1->left->right=newnode(5);
+
+    //creation of second tree
+    node *root2=newnode(1);
+    root2->left=newnode(2);
+    root2->right=newnode(3);
+    root2->left->left=newnode(4);
+    //root2->left->right=newnode(5);
+
+
+    if(sametree(root1,root2))
+    {
+        cout<&lt;"same tree"<&lt;endl;
+    }
+    else
+    {
+        cout<&lt;"different"<&lt;endl;
+    }
+}
+</pre>
+
+
+    </div>
+    
+  </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+  </body>
+</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+</body>
+</html>

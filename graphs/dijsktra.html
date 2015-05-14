@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Programming Made Fun</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body>
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4 offset4" >
+<div class="page-header">
+  <h2>Programming Made Fun</h1>
+</div>
+    </div>
+  <div class="span8 offset2">
+    <div class="row-fluid">
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <a href="index.html"></a>
+    <ul class="nav">
+    <li><a href="file:///F|/sites/portal/index.html">Trees</a></li>
+   <li><a href="file:///F|/sites/portal/graph.html">Graphs</a></li>
+    <li>
+      <a href="file:///F|/sites/portal/sorting.html">Sorting</a></li>
+
+    </ul>
+    </div>
+    </div>
+     <div class="tabbable tabs-left">
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab2">
+      
+     <h3>Dijsktra algorithm</h3>
+        <hr></hr><div class="well">
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Algorithm</h4>We do a DFS traversal of the given graph. For every visited vertex ‘v’, if there is an adjacent ‘u’ such that u is already visited and u is not parent of v, then there is a cycle in graph. If we don’t find such an adjacent for any vertex, we say that there is no cycle. The assumption of this approach is that there are no parallel edges between any two vertices.
+For example in the below graph
+<img src="dijkstra.jpg">
+There is a cycle 1-2-3.
+ </pre>
+       </div>
+       <div class="well"> 
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Source Code</h4>#include &lt;bits/stdc++.h &gt;
+using namespace std;
+vector&lt;int&gt; v1;
+struct node
+{
+    int x;
+    int val;
+    node *next1;
+};
+//funtion to create a directed graph using adjaceny list
+void addedge(node a[],int *q,int src,int dest,int dist,int v)
+{
+
+    node *ptr=new node();
+    node *head=a[src].next1;
+    ptr->x=dest;
+    ptr->val=1000;
+    a[src].next1=ptr;
+    ptr->next1=head;
+ //Way to enter values in a 2-d array passed as a parameter
+    q[(src*v)+dest]=dist;
+}
+//Function to print the graph
+void print(node a[],int v)
+{
+
+    for(int i=0;i&lt;v;i++)
+    {
+        cout<&lt;a[i].x<&lt;"("<&lt;a[i].val<&lt;")"<&lt;"\t";
+        node *ptr1=a[i].next1;
+        while(ptr1!=NULL)
+        {
+            cout<&lt;"-"<&lt;"\t"<&lt;ptr1->x<&lt;"\t";
+            ptr1=ptr1->next1;
+        }
+        cout<&lt;"\n";
+    }
+}
+//Function to check whether the value given as a parameter is present in the vector or not
+int is_member(int u)
+{
+    int f;
+    for(int i=0;i&lt;v1.size();i++)
+    {
+        if(u==v1[i])
+        {
+            f=1;
+            break;
+        }
+        else
+            f=0;
+    }
+    return f;
+}
+//Function to calculate the position corresponding to minimum distance in each step
+int minimum(int *q,int v,int o)
+{
+    int k=o;
+    int mini=q[o*v+o];
+   for(int i=0;i&lt;v;i++)
+       {
+           int g=is_member(i);
+           {
+               if(g==0)
+               {
+            if(q[o*v+i]&lt;mini)
+        {
+            k=i;
+            mini=q[o*v+i];
+        }
+           }
+           }
+       }
+    return k;
+}
+//Main function that uses all the above functions to apply dijkstra algorithm
+int main()
+{
+    int v,r,m,k,t;
+    cout<&lt;"enter no. of vertices";
+    cin>&gt;v;
+    //here take v according to the vertices given below.It is 5 here
+
+  node graph[v];
+  int d[v][v];
+//Assigning initial large values between any two vertices.
+for(int i=0;i&lt;v;i++)
+{
+    for(int j=0;j&lt;v;j++)
+    {
+      d[i][j]=10000;
+    }
+}
+  
+    for(int i=0;i&lt;v;i++)
+    {
+        graph[i].val=0;
+        graph[i].x=1;
+        graph[i].next1=NULL;
+    }
+//use any of the given below to create an edge
+   /* while(cin.get()!='\n')
+    {
+        cin>&gt;m>&gt;k;
+        addedge(graph,m,k);
+    }*/
+    //or
+ addedge(graph,&d[0][0],0,1,10,v);
+ addedge(graph,&d[0][0],0,3,30,v);
+ addedge(graph,&d[0][0],0,4,100,v);
+ addedge(graph,&d[0][0],1,2,50,v);
+ addedge(graph,&d[0][0],2,4,10,v);
+addedge(graph,&d[0][0],3,2,20,v);
+ addedge(graph,&d[0][0],3,4,60,v);
+ cout<&lt;"enter vertex no. through which u want shortest path of all vertices"<&lt;endl;
+    cin>&gt;r;
+    v1.push_back(r);
+    while(v1.size()&lt;v)
+    {
+int l=minimum(&d[0][0],v,r);
+    v1.push_back(l);
+    for(int i=0;i&lt;v;i++)
+    {
+        d[r][i]=min(d[r][i],(d[r][v1.back()]+d[v1.back()][i]));
+    }
+//To print distances in each and every step.
+/*for(int i=0;i&lt;v;i++)
+
+    {
+        cout<&lt;d[r][i]<&lt;"\t";
+    }*/
+    }
+    for(int i=0;i&lt;v;i++)
+    {
+        cout<&lt;"d["<&lt;r<&lt;"]""["<&lt;i<&lt;"]="<&lt;d[r][i]<&lt;"\t";
+    }
+ return 0;
+}
+
+
+</pre>
+
+
+    </div>
+    
+  </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+  </body>
+</html>

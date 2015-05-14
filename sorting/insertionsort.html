@@ -1,0 +1,114 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Programming Made Fun</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body>
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4 offset4" >
+<div class="page-header">
+  <h2>Programming Made Fun</h1>
+</div>
+    </div>
+  <div class="span8 offset2">
+    <div class="row-fluid">
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <a href="index.html"></a>
+    <ul class="nav">
+    <li><a href="file:///C|/Users/GyanComputers.com/Desktop/portal/index.html">Trees</a></li>
+   <li><a href="file:///C|/Users/GyanComputers.com/Desktop/portal/graph.html">Graphs</a></li>
+    <li>
+      <a href="file:///C|/Users/GyanComputers.com/Desktop/portal/sorting.html">Sorting</a></li>
+
+    </ul>
+    </div>
+    </div>
+     <div class="tabbable tabs-left">
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab2">
+      
+     <h3>Insertion Sort</h3>
+        <hr></hr><div class="well">
+      <pre class="brush: cpp;title: ; notranslate" title="">
+	  <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Animation</h4><a href="insertionsort1.html">Animation</a>
+</pre>
+<h4>Algorithm</h4>
+<img src="Insertion-Sort.jpg">
+
+Explanation:
+Suppose, you want to sort elements in ascending as in above figure. Then,
+    
+    <strong>Step 1:</strong> The second element of an array is compared with the elements that appears before it (only first element in this case). If the second element is smaller than first element, second element is inserted in the position of first element. After first step, first two elements of an array will be sorted.<br>
+    <strong>Step 2:</strong> The third element of an array is compared with the elements that appears before it (first and second element). If third element is smaller than first element, it is inserted in the position of first element. If third element is larger than first element but, smaller than second element, it is inserted in the position of second element. If third element is larger than both the elements, it is kept in the position as it is. After second step, first three elements of an array will be sorted.<br>
+    <strong>Step 3:</strong> Similary, the fourth element of an array is compared with the elements that appears before it (first, second and third element) and the same procedure is applied and that element is inserted in the proper position. After third step, first four elements of an array will be sorted.
+
+If there are n elements to be sorted. Then, this procedure is repeated n-1 times to get sorted list of array.
+</pre>
+       </div>
+       <div class="well"> 
+      <pre class="brush: cpp;title: ; notranslate" title="">
+	  
+<h4>Source Code</h4>#include&lt;stdio.h&gt;
+int main()
+{
+    int n,i,j,key;
+    printf("enter the sizeof array");
+    scanf("%d",&n);
+    int a[n];
+    printf("enter the array");
+    for(i=0;i&lt;n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    
+    //algo for insertion sort
+    for(j=1;j&lt;n;j++)
+        {
+            key=a[j];
+            i=j-1;
+                while(key&lt;a[i]&&i&gt;=0)
+                    {
+                        a[i+1]=a[i];
+                        i=i-1;
+                    }
+            a[i+1]=key;
+        }
+    printf("\nthe sorted array in increasing order is\n ");
+    for(i=0;i&lt;n;i++)
+    {
+        printf("\nthe %d element is %d",i+1,a[i]);
+    }
+
+
+    return(0);
+}</pre></div>
+              
+     
+
+    </div>
+    
+  </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+  </body>
+
+</html>

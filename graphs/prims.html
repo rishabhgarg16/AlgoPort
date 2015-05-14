@@ -1,0 +1,195 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Programming Made Fun</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body>
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4 offset4" >
+<div class="page-header">
+  <h2>Programming Made Fun</h1>
+</div>
+    </div>
+  <div class="span8 offset2">
+    <div class="row-fluid">
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <a href="index.html"></a>
+    <ul class="nav">
+    <li><a href="file:///F|/sites/portal/index.html">Trees</a></li>
+   <li><a href="file:///F|/sites/portal/graph.html">Graphs</a></li>
+    <li>
+      <a href="file:///F|/sites/portal/sorting.html">Sorting</a></li>
+
+    </ul>
+    </div>
+    </div>
+     <div class="tabbable tabs-left">
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab2">
+      
+     <h3>prims algorithm</h3>
+        <hr></hr><div class="well">
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Algorithm</h4>We do a DFS traversal of the given graph. For every visited vertex ‘v’, if there is an adjacent ‘u’ such that u is already visited and u is not parent of v, then there is a cycle in graph. If we don’t find such an adjacent for any vertex, we say that there is no cycle. The assumption of this approach is that there are no parallel edges between any two vertices.
+For example in the below graph
+<img src="prims.jpg">
+There is a cycle 1-2-3.
+ </pre>
+       </div>
+       <div class="well"> 
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Source Code</h4>#include &lt;bits/stdc++.h &gt;
+using namespace std;
+vector&lt;int&gt; v1,v2;
+int c=0,k,m;
+struct node
+{
+    int x;
+    int val;
+    node *next1;
+};
+//funtion to create a undirected graph using adjaceny list
+void addedge(node a[],int *q,int src,int dest,int dist,int v)
+{
+
+    node *ptr=new node();
+    node *head=a[src].next1;
+    ptr->x=dest;
+    ptr->val=1000;
+    a[src].next1=ptr;
+    ptr->next1=head;
+    q[(src*v)+dest]=dist;
+    node *ptr2=new node();
+    node *head1=a[dest].next1;
+    ptr2->x=src;
+    a[dest].next1=ptr2;
+    ptr2->next1=head1;
+    q[(dest*v)+src]=dist;
+}
+/*function to apply prims algorithm.Here printing is done in two ways.One it prints the order in which we visit the edges.And second is the new graph
+(here graph b is passed as an parameter to create a new graph(tree) from graph a) formed*/
+
+void prims(node a[],node b[],int *q,int *r,int v,int e)
+{
+    //way to access values of a 2-d array passed as a parameter in a function.
+    int mini=q[(0*v)+0];
+    v2.push_back(e);
+    a[e].val=1;
+    for(int i=0;i&lt;v2.size();i++)
+    {
+        for(int j=0;j&lt;v;j++)
+        {
+            if(q[((v2[i])*v)+j]&lt;mini&&a[j].val==0)
+            {
+                m=v2[i];
+                k=j;
+                mini=q[((v2[i])*v)+j];
+            }
+        }
+    }
+        c++;
+   if(c!=v)
+   {
+       addedge(b,&r[0*v+0],m,k,mini,v);
+       cout<&lt;m<&lt;"\t"<&lt;endl;
+    prims(a,b,&q[0*v+0],&r[0*v+0],v,k);
+   }
+}
+//Function to print the graph
+void print(node a[],int v)
+{
+
+    for(int i=0;i&lt;v;i++)
+    {
+        cout<&lt;a[i].x<&lt;"("<&lt;a[i].val<&lt;")"<&lt;"\t";
+        node *ptr1=a[i].next1;
+        while(ptr1!=NULL)
+        {
+            cout<&lt;"-"<&lt;"\t"<&lt;ptr1->x<&lt;"\t";
+            ptr1=ptr1->next1;
+        }
+        cout<&lt;"\n";
+    }
+}
+//Main function that uses all the above functions to apply prims algorithm.
+int main()
+{
+    int v,r,m,k,t;
+    cout<&lt;"enter no. of vertices";
+    cin>&gt;v;
+    //here take v according to the vertices given below.It is 6 here
+
+  node graph[v],graph1[v];
+  int d[v][v],s[v][v];
+//Assigning initial large values between any two vertices.
+for(int i=0;i&lt;v;i++)
+{
+    for(int j=0;j&lt;v;j++)
+    {
+      d[i][j]=10000;
+      s[i][j]=10000;
+    }
+}
+    for(int i=0;i&lt;v;i++)
+    {
+        graph[i].val=0;
+        graph1[i].val=0;
+        graph[i].x=i;
+        graph1[i].x=i;
+        graph[i].next1=NULL;
+        graph1[i].next1=NULL;
+    }
+//use any of the given below to create an edge
+   /* while(cin.get()!='\n')
+    {
+        cin>&gt;m>&gt;k;
+        addedge(graph,m,k);
+    }*/
+    //or
+ addedge(graph,&d[0][0],0,1,6,v);
+ addedge(graph,&d[0][0],0,2,1,v);
+ addedge(graph,&d[0][0],0,3,5,v);
+ addedge(graph,&d[0][0],1,2,5,v);
+ addedge(graph,&d[0][0],1,4,3,v);
+addedge(graph,&d[0][0],2,3,5,v);
+ addedge(graph,&d[0][0],2,4,6,v);
+ addedge(graph,&d[0][0],2,5,4,v);
+ addedge(graph,&d[0][0],2,4,6,v);
+ addedge(graph,&d[0][0],3,5,2,v);
+ addedge(graph,&d[0][0],2,4,6,v);
+ addedge(graph,&d[0][0],4,5,6,v);
+ cout<&lt;"order in which verices and edges are being visited"<&lt;endl;
+prims(graph,graph1,&d[0][0],&s[0][0],v,0);
+cout<&lt;"adjacency list of minimum spanning tree(graph) is"<&lt;endl;
+print(graph1,v);
+ return 0;
+}
+
+</pre>
+
+
+    </div>
+    
+  </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+  </body>
+</html>

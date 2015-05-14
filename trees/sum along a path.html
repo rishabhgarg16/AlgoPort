@@ -1,0 +1,138 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Programming Made Fun</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body>
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4 offset4" >
+<div class="page-header">
+  <h2>Programming Made Fun</h1>
+</div>
+    </div>
+  <div class="span8 offset2">
+    <div class="row-fluid">
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <a href="index.html"></a>
+    <ul class="nav">
+    <li class="active"><a href="#">Trees</a></li>
+ <li><a href="#">Dp</a></li>
+ 
+    <li>
+      <a href="#">
+      Backtracking
+      </a>
+        
+    </li>
+   <li><a href="team.html">sdsd</a></li>
+    <li>
+      <a href="#">dsdsd
+      </a>
+       </li>
+
+       <li><a href=""#>sdsd</a></li>
+    <li><a href="dropbox.php">sdsd</a></li>
+</ul>
+    </div>
+    </div>
+     <div class="tabbable tabs-left">
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      
+     <h3>Sum along a path from root to leaf node </h3>
+        <hr></hr><div class="well">
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Algorithm</h4>Given a tree and a sum, return true if there is a path from the root
+down to a leaf, such that adding up all the values along the path
+equals the given sum.
+<img src="tree.jpg" /> 	 
+For example in the above tree if the given sum is 7 then it returns true.
+      </pre>
+       </div>
+       <div class="well"> 
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Source Code</h4>#include &lt;iostream &gt;
+using namespace std;
+struct node
+{
+    int data;
+    node *left;
+    node *right;
+};
+
+node *newnode(int val)
+{
+    node *ptr=new node();
+    ptr->data=val;
+    ptr->left=NULL;
+    ptr->right=NULL;
+    return(ptr);
+}
+
+bool givensumpath(node *ptr,int sum)
+{
+    if(ptr==NULL)
+    {
+        return(sum==0);
+    }
+    int sum1=sum-ptr->data;
+    return(givensumpath(ptr->left,sum1)||givensumpath(ptr->right,sum1));
+}
+
+int main()
+{
+    int givensum;
+    cout<&lt;"enter the sum"<&lt;endl;
+    cin>&gt;givensum;
+    node *root=newnode(1);
+    root->left=newnode(2);
+    root->right=newnode(3);
+    root->left->left=newnode(4);
+    root->left->right=newnode(5);
+    if(givensumpath(root,givensum))
+    {
+        cout<&lt;"exists";
+    }
+    else
+    {
+        cout<&lt;"does not exist";
+    }
+}
+</pre>
+
+
+    </div>
+    
+  </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+  </body>
+</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+</body>
+</html>

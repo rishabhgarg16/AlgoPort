@@ -1,0 +1,191 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Programming Made Fun</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body>
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4 offset4" >
+<div class="page-header">
+  <h2>Programming Made Fun</h1>
+</div>
+    </div>
+  <div class="span8 offset2">
+    <div class="row-fluid">
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <a href="index.html"></a>
+    <ul class="nav">
+    <li><a href="file:///F|/sites/portal/index.html">Trees</a></li>
+   <li><a href="file:///F|/sites/portal/graph.html">Graphs</a></li>
+    <li>
+      <a href="file:///F|/sites/portal/sorting.html">Sorting</a></li>
+
+    </ul>
+    </div>
+    </div>
+     <div class="tabbable tabs-left">
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab2">
+      
+     <h3>Application of depth first search(bfs)</h3>
+        <hr></hr><div class="well">
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Algorithm</h4>We do a DFS traversal of the given graph. For every visited vertex ‘v’, if there is an adjacent ‘u’ such that u is already visited and u is not parent of v, then there is a cycle in graph. If we don’t find such an adjacent for any vertex, we say that there is no cycle. The assumption of this approach is that there are no parallel edges between any two vertices.
+For example in the below graph
+<img src="dfs.jpg">
+There is a cycle 1-2-3.
+ </pre>
+       </div>
+       <div class="well"> 
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Source Code</h4>#include &lt;bits/stdc++.h &gt;
+using namespace std;
+int c=1,u=0;
+vector&lt;int&gt; v2;
+struct node{
+    int x;
+    int val;
+    node *next1;
+};
+//function to create edge between source and destination to create a graph.
+    void addedge(node a[],int src,int dest)
+{
+
+    node *ptr=new node();
+    node *head=a[src].next1;
+    ptr->x=dest;
+    a[src].next1=ptr;
+    ptr->next1=head;
+
+}
+//function to apply dfs using queue.This will give different components on which dfs has een applied and also gives df number.
+void dfs(node a[],int p,int v)
+{
+int o,t;
+
+    queue&lt;int&gt; q;
+    q.push(p);
+    a[p].val=c;
+    while(!q.empty())
+    {
+        node *ptr2=a[p].next1;
+        while(ptr2!=NULL)
+        {
+        if(a[ptr2->x].val==0)
+        {
+            q.push(ptr2->x);
+         c=c+1;
+         a[ptr2->x].val=c;
+
+        }
+        ptr2=ptr2->next1;
+        }
+        cout<&lt;q.front()<&lt;"\t";
+        q.pop();
+        p=q.front();
+
+    }
+    cout<&lt;"\n";
+   for(int i=0;i&lt;v;i++)
+    {
+        if(a[i].val==0)
+        {
+            o=i;
+              t=1;
+            break;
+        }
+    }
+    if(t==1)
+    {
+        c=c+1;
+        dfs(a,o,v);
+    }
+
+}
+//Function to print the graph.Here it would print the df number as well.
+void print(node a[],int v)
+{
+
+    for(int i=0;i&lt;v;i++)
+    {
+        cout<&lt;a[i].x<&lt;"("<&lt;a[i].val<&lt;")"<&lt;"\t";
+        node *ptr1=a[i].next1;
+        while(ptr1!=NULL)
+        {
+            cout<&lt;ptr1->x<&lt;"\t";
+            ptr1=ptr1->next1;
+        }
+        cout<&lt;"\n";
+    }
+}
+//Driver program to apply above functions.
+main()
+{
+    int v,m,k,y,d=0;
+    cout<&lt;"enter no. of vertices";
+    cin>&gt;v;
+    //here take v according to the vertices given below.It is 7 here
+  node graph[v];
+  //cout<&lt;"enter values of graph starting from 0"<&lt;"\t";
+    for(int i=0;i&lt;v;i++)
+    {
+        graph[i].val=0;
+        graph[i].x=i;
+        graph[i].next1=NULL;
+    }
+//use any of the given below to create an edge
+    /*while(cin.get()!='\n')
+    {
+        cin>&gt;m>&gt;k;
+        addedge(graph,m,k);
+    }*/
+    //or
+ addedge(graph,0,1);
+ addedge(graph,1,5);
+ addedge(graph,1,6);
+ addedge(graph,2,1);
+ addedge(graph,3,4);
+ addedge(graph,3,2);
+ addedge(graph,4,2);
+ addedge(graph,5,0);
+ addedge(graph,5,6);
+ addedge(graph,6,0);
+ cout<&lt;"enter the vertex u want to start ur dfs with"<&lt;endl;
+ cin>&gt;y;
+ dfs(graph,y,v);
+
+ cout<&lt;endl;
+
+ print(graph,v);
+}
+
+
+
+</pre>
+
+
+    </div>
+    
+  </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+  </body>
+</html>

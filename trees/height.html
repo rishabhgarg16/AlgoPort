@@ -1,0 +1,119 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Programming Made Fun</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body>
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4 offset4" >
+<div class="page-header">
+  <h2>Programming Made Fun</h1>
+</div>
+    </div>
+  <div class="span8 offset2">
+    <div class="row-fluid">
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <a href="index.html"></a>
+    <ul class="nav">
+    <li class="active"><a href="#">Trees</a></li>
+ <li><a href="#">Dp</a></li>
+ 
+    <li>
+      <a href="#">
+      Backtracking
+      </a>
+        
+    </li>
+   <li><a href="team.html">sdsd</a></li>
+    <li>
+      <a href="#">dsdsd
+      </a>
+       </li>
+
+       <li><a href=""#>sdsd</a></li>
+    <li><a href="dropbox.php">sdsd</a></li>
+</ul>
+    </div>
+    </div>
+     <div class="tabbable tabs-left">
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      
+     <h3>Size Of A Tree </h3>
+        <hr></hr><div class="well">
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Algorithm</h4>Computes the number of nodes in a tree
+For example: The tree below has 5 nodes
+<img src="tree.jpg">
+      </pre>
+       </div>
+       <div class="well"> 
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Source Code</h4>#include &lt;iostream &gt;
+using namespace std;
+struct node
+{
+    int data;
+    node *left;
+    node *right;
+};
+
+node *newnode(int val)
+{
+    node *ptr=new node();
+    ptr->data=val;
+    ptr->left=NULL;
+    ptr->right=NULL;
+    return(ptr);
+}
+
+int sizetree(node *ptr)
+{
+    if(ptr==NULL)
+    {
+        return(0);
+    }
+    else
+    {
+        return(sizetree(ptr->left)+1+sizetree(ptr->right));
+    }
+}
+
+int main()
+{
+    node *root=newnode(1);
+    root->left=newnode(2);
+    root->right=newnode(3);
+    root->left->left=newnode(4);
+    root->left->right=newnode(5);
+    int size;
+    size=sizetree(root);
+    cout &lt;&lt;size;
+}</pre>
+
+
+    </div>
+    
+  </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+  </body>
+</html>

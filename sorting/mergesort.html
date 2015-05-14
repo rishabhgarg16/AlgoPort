@@ -1,0 +1,145 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Programming Made Fun</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body>
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4 offset4" >
+<div class="page-header">
+  <h2>Programming Made Fun</h1>
+</div>
+    </div>
+  <div class="span8 offset2">
+    <div class="row-fluid">
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <a href="index.html"></a>
+    <ul class="nav">
+    <li><a href="file:///C|/Users/GyanComputers.com/Desktop/portal/index.html">Trees</a></li>
+   <li><a href="file:///C|/Users/GyanComputers.com/Desktop/portal/graph.html">Graphs</a></li>
+    <li>
+      <a href="file:///C|/Users/GyanComputers.com/Desktop/portal/sorting.html">Sorting</a></li>
+
+    </ul>
+    </div>
+    </div>
+     <div class="tabbable tabs-left">
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab2">
+      
+     <h3>Merge Sort</h3>
+        <hr></hr><div class="well">
+      <pre class="brush: cpp;title: ; notranslate" title="">
+	  <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Animation</h4><a href="mergesort1.html">Animation</a>
+</pre>
+<h4>Algorithm</h4>Merge sort is based on the divide-and-conquer paradigm. Its worst-case running time has a lower order of growth than insertion sort. Since we are dealing with subproblems, we state each subproblem as sorting a subarray A[p .. r]. Initially, p = 1 and r = n, but these values change as we recurse through subproblems.
+
+To sort A[p .. r]:
+
+<strong>1. Divide Step</strong>
+
+If a given array A has zero or one element, simply return; it is already sorted. Otherwise, split A[p .. r] into two subarrays A[p .. q] and A[q + 1 .. r], each containing about half of the elements of A[p .. r]. That is, q is the halfway point of A[p .. r].
+
+<strong>2. Conquer Step</strong>
+
+Conquer by recursively sorting the two subarrays A[p .. q] and A[q + 1 .. r].
+
+<strong>3. Combine Step</strong>
+
+Combine the elements back in A[p .. r] by merging the two sorted subarrays A[p .. q] and A[q + 1 .. r] into a sorted sequence. To accomplish this step, we will define a procedure MERGE (A, p, q, r).
+
+Note that the recursion bottoms out when the subarray has just one element, so that it is trivially sorted.
+<br><br><img src="mergeSort.gif">
+ 
+ </pre>
+       </div>
+       <div class="well"> 
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Source Code</h4>#include &lt;bits/stdc++.h &gt;
+using namespace std;
+//int m;
+void merge1(int y[],int n,int p,int q,int r)
+{
+    //cout<&lt;y[1]<<"\t";
+    int w[q-p+1+1],z[r-q+1];
+    for(int i=1;i<=q-p+1;i++)
+        {
+        w[i]=y[p+i-1];
+        //cout<&lt;w[i]<&lt;"\t";
+        }
+     for(int i=1;i&lt;=r-q;i++)
+        z[i]=y[i+q];
+    w[q-p+1+1]=10000;
+	z[r-q+1]=10000;
+    int i=1;
+    int j=1;
+    for(int o=p;o<=r;o++)
+    {
+        if(w[i]<=z[j])
+        {
+            y[o]=w[i];
+            //y[o]=t[o];
+            i++;
+        }
+        else
+        {
+            y[o]=z[j];
+            //y[o]=t[o];
+            j++;
+        }
+    }
+}
+void mergesort(int b[],int k,int s,int e)
+{
+    int m;
+    if(s&lt;e)
+    {
+    m=(s+e)/2;
+    mergesort(b,k,s,m);
+    mergesort(b,k,m+1,e);
+    //merge1(c[u],d[k-u],k);
+    merge1(b,k,s,m,e);
+    }
+
+}
+int main()
+{
+    int n;
+    cin>&gt;n;
+    int a[n],x[n];
+    for(int i=1;i&lt;=n;i++)
+        cin>&gt;a[i];
+    mergesort(a,n,1,n);
+    for(int i=1;i&lt;=n;i++)
+        cout<&lt;a[i]<&lt;"\t";
+}
+</pre></div>
+              
+     
+
+    </div>
+    
+  </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+  </body>
+</html>

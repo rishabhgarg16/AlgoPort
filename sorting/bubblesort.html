@@ -1,0 +1,104 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Programming Made Fun</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+  </head>
+
+  <body>
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4 offset4" >
+<div class="page-header">
+  <h2>Programming Made Fun</h1>
+</div>
+    </div>
+  <div class="span8 offset2">
+    <div class="row-fluid">
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <a href="index.html"></a>
+    <ul class="nav">
+    <li><a href="file:///C|/Users/GyanComputers.com/Desktop/portal/index.html">Trees</a></li>
+   <li><a href="file:///C|/Users/GyanComputers.com/Desktop/portal/graph.html">Graphs</a></li>
+    <li>
+      <a href="file:///C|/Users/GyanComputers.com/Desktop/portal/sorting.html">Sorting</a></li>
+
+    </ul>
+    </div>
+    </div>
+     <div class="tabbable tabs-left">
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab2">
+      
+     <h3>Bubble Sort</h3>
+        <hr></hr><div class="well">
+		              <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Animation</h4><a href="bubblesort1.html">Animation</a>
+</pre>
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Algorithm</h4>The simplest sorting algorithm is bubble sort. The bubble sort works by iterating down an array to be sorted from the first element to the last, comparing each pair of elements and switching their positions if necessary. This process is repeated as many times as necessary, until the array is sorted. Since the worst case scenario is that the array is in reverse order, and that the first element in sorted array is the last element in the starting array, the most exchanges that will be necessary is equal to the length of the array. Here is a simple example: 
+
+Given an array 23154 a bubble sort would lead to the following sequence of partially sorted arrays: 21354, 21345, 12345. First the 1 and 3 would be compared and switched, then the 4 and 5. On the next pass, the 1 and 2 would switch, and the array would be in order. 
+ </pre>
+       </div>
+       <div class="well"> 
+      <pre class="brush: cpp;title: ; notranslate" title="">
+<h4>Source Code</h4>#include &lt;bits/stdc++.h &gt;
+using namespace std;
+int main()
+{
+    int i,j,n,t;
+    cout<&lt;"enter no. of values u want to sort";
+    cin>&gt;n;
+    int a[n];
+for(i=0;i&lt;n;i++)
+{
+cout<&lt;"enter value"<&lt;"\t";
+cin>&gt;a[i];
+}
+for(i=0;i&lt;n;i++)
+{
+    for(j=n;j&gt;i;j--)
+    {
+        if(a[j-1]>a[j])
+        {
+
+            t=a[j-1];
+            a[j-1]=a[j];
+            a[j]=t;
+        }
+    }
+}
+for(i=0;i&lt;n;i++)
+{
+    cout<&lt;a[i]<&lt;"\t";
+}
+return 0;
+}
+</pre></div>
+
+     
+
+    </div>
+    
+  </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+  </body>
+
+</html>
